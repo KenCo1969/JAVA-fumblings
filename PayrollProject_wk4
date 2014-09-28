@@ -1,0 +1,110 @@
+package PayrollProject_wk4;
+
+/**
+ *
+ * @author KenCo
+ */
+import java.util.Scanner;
+
+//Retaining employee information
+    class Employee
+    {
+        private String empName;
+        private double payRate;
+        private double weekHours;
+
+        //default constructor
+        public Employee ()
+        {
+            empName = "";
+            payRate = 0;
+            weekHours = 0;
+        }//end constructor
+
+        //parameters
+        public Employee(String empName, double payRate, double weekHours)
+        {
+            this.empName = empName;
+            this.payRate = payRate;
+            this.weekHours = weekHours;
+        }//end parameter constructor
+
+        public void setempName (String empName) 
+            {
+            this.empName = empName;
+            }
+
+        String getempName ()
+            {
+            return empName;        
+            }
+        public void setpayRate (double payRate)
+            {
+            this.payRate = payRate;
+            }
+        public double getpayRate()
+            {
+            return payRate;
+            }
+        public void setweekHours (double weekHours)
+            {
+            this.weekHours = weekHours;
+            }
+        public double getweekHours()
+            {
+            return weekHours;
+            }
+        }//end Employee class
+
+public class PayrollProject_wk4 
+{
+    public PayrollProject_wk4 (String empName, double payRate, double weekHours)
+    {
+    }
+    public static void main(String[] args) 
+    {
+        Employee emp = new Employee();
+        
+    System.out.println( "Weekly Payroll Calculator");
+        
+    while (true)
+    {
+        //Employee empName
+            System.out.println( "Please enter the name of an employee:");
+            System.out.print( "Or type 'stop' to exit program: ");
+    {Scanner input = new Scanner(System.in );
+            emp.setempName(input.nextLine());
+                if (emp.getempName().equalsIgnoreCase("stop") )
+                {
+                break;  // Break Out of While Loop and end program
+                }
+           
+        //Hourly Pay Rate
+            System.out.print( "Enter an hourly pay rate:$"); 
+            emp.setpayRate(input.nextDouble());
+            
+                while ( emp.getpayRate()<=0)
+                {
+                System.out.println ("Positive numbers only: retry");
+                emp.setpayRate(input.nextDouble());
+                }
+
+        //Hours this Pay Period
+        System.out.print("How many hours did the employee work this pay period?:");
+        emp.setweekHours (input.nextDouble());
+                while ( emp.getweekHours()<=0)
+                {
+                System.out.println ("Positive numbers only: retry");
+                emp.setweekHours(input.nextDouble());
+                }
+
+        //Payday
+        System.out.printf ("Employee " + emp.getempName());
+        System.out.printf("'s Total Pay is: $%.2f", emp.getpayRate()*emp.getweekHours());
+        System.out.println();
+            
+    }//end of scanner
+    }//end of while loop
+}//end main
+}//end class PayrollProject_wk4
+
